@@ -130,9 +130,7 @@ app.use(errorHandler);
 // Definimos a porta como constante para facilitar a mudança depois.
 const PORTA = process.env.PORT || 3000;
 
-// Em Vercel, o app é executado como função serverless, portanto
-// não devemos iniciar um listener manualmente.
-if (!process.env.VERCEL) {
+if (process.env.NODE_ENV !== 'production') {
     app.listen(PORTA, () => {
         console.log('');
         console.log('🚀 ================================');
